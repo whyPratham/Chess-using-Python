@@ -1,0 +1,160 @@
+DAY 1 — ENVIRONMENT SETUP ----------------------------------
+
+Goal: Prepare everything required.
+
+Install libraries
+pip install pygame
+pip install python-chess
+
+DAY 2 — UNDERSTAND PYTHON-CHESS BOARD ----------------------------------
+Create a chess board
+import chess
+
+board = chess.Board()
+print(board)
+Output
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+P P P P P P P P
+R N B Q K B N R
+
+Learn:
+
+board
+
+board.turn
+
+board.legal_moves
+
+board.push()
+
+DAY 3 — MOVING PIECES USING PYTHON-CHESS ----------------------------------
+Example move
+import chess
+
+board = chess.Board()
+
+move = chess.Move.from_uci("e2e4")
+
+if move in board.legal_moves:
+    board.push(move)
+
+print(board)
+
+DAY 4 — CREATE CHESSBOARD GUI (PYGAME) ----------------------------------
+
+Create the 8x8 board visually.
+
+DAY 5 — DRAW CHESS PIECES ----------------------------------
+
+Now load piece images.
+
+DAY 6 — MAP BOARD SQUARES TO SCREEN COORDINATES ----------------------------------
+
+You must convert:
+
+Mouse position → chess square
+
+Example:
+
+col = mouse_x // square_size
+row = mouse_y // square_size
+
+Convert to python-chess square:
+
+square = chess.square(col, 7-row)
+
+DAY 7 — SELECT A PIECE WITH MOUSE ----------------------------------
+
+Logic:
+
+Click square
+
+Check if piece exists
+
+piece = board.piece_at(square)
+
+If piece exists → store it.
+
+Example variable:
+
+selected_square
+
+Output:
+
+Clicking piece selects it
+
+DAY 8 — SHOW LEGAL MOVES (GUIDE SYSTEM) ----------------------------------
+
+Use:
+
+board.legal_moves
+
+Filter moves:
+
+for move in board.legal_moves:
+    if move.from_square == selected_square:
+        print(move)
+
+Display highlight circles on legal squares.
+
+Output:
+
+Click piece → legal moves highlighted
+
+DAY 9 — MOVE PIECE WITH SECOND CLICK ----------------------------------
+
+Workflow:
+
+Click piece → store square
+Click destination → create move
+
+Example:
+
+move = chess.Move(from_square, to_square)
+
+if move in board.legal_moves:
+    board.push(move)
+
+DAY 10 — UPDATE BOARD GRAPHICS ----------------------------------
+
+After move:
+
+clear screen
+
+redraw board
+
+redraw pieces
+
+Use:
+
+pygame.display.flip()
+
+Now game visually updates after every move.
+
+DAY 11 — GAME STATE DETECTION ----------------------------------
+
+Check:
+
+board.is_check()
+board.is_checkmate()
+board.is_stalemate()
+board.is_game_over()
+
+Example:
+
+Checkmate!
+White Wins
+
+DAY 12 — POLISH THE GAME ----------------------------------
+
+Add:
+
+♟ Move highlighting
+♟ Turn display
+♟ Restart button
+♟ Captured pieces
