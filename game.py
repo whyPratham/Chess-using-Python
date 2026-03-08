@@ -244,6 +244,15 @@ class ChessGame:
         while running:
 
             for event in pygame.event.get():
+
+                # CLOSE WINDOW
+                if event.type == pygame.QUIT:
+                    running = False
+
+                #GAME RESET LOGIC
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_r:
+                        self.reset()
                 #MOUSE PRESS LOGIC
                 if event.type == pygame.MOUSEBUTTONDOWN:
 
