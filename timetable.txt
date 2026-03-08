@@ -55,7 +55,7 @@ Now load piece images.
 
 DAY 6 — MAP BOARD SQUARES TO SCREEN COORDINATES ----------------------------------
 
-You must convert:
+One must convert:
 
 Mouse position → chess square
 
