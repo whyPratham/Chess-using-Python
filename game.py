@@ -48,11 +48,7 @@ class ChessGame:
 
                 color = LIGHT if (row+col)%2==0 else DARK
 
-                pygame.draw.rect(
-                    self.screen,
-                    color,
-                    (col*SQUARE_SIZE,row*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE)
-                )
+                pygame.draw.rect(self.screen,color,(col*SQUARE_SIZE,row*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE))
 
     # -------------------------
     # LAST MOVE HIGHLIGHT
